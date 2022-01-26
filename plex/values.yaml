@@ -9,6 +9,7 @@ service:
   port: 32400
 
 resources:
+  enabled: true
   limits:
     cpu: 1500m
     memory: 1Gi
