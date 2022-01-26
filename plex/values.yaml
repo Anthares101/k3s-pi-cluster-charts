@@ -8,8 +8,7 @@ service:
   type: NodePort
   port: 32400
 
-resources:
-  enabled: true
+resources: |
   limits:
     cpu: 1500m
     memory: 1Gi
