@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  imageVersion: linuxserver/plex:1.25.3
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 32400
+
+resources:
+  limits:
+    cpu: 1500m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 200Mi
+
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

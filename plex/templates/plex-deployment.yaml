@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: plex
+  name: plex
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      containers:
+      - image: {{ .Values.image.imageVersion }}
+        imagePullPolicy:  {{ .Values.image.pullPolicy }}
+        name: plex
+        resources: {{ .Values.resources }}
+        ports:
+        - containerPort: 32400
+        env:
+        - name: PUID
+          value: 1000
+        - name: PGID
+          value: 1000
+        - name: VERSION
+          value: docker
+        volumeMounts:
+        - mountPath: /data
+          name: plex-data-storage
+        - mountPath: /config
+          name: plex-config-storage
+        - mountPath: /transcode
+          name: plex-transcode-storage
+      volumes:
+      - name: plex-data-storage
+        persistentVolumeClaim:
+          claimName: plex-data-storage
+      - name: plex-config-storage
+        persistentVolumeClaim:
+          claimName: plex-config-storage
+      - name: plex-transcode-storage
+        persistentVolumeClaim:
+          claimName: plex-transcode-storage
