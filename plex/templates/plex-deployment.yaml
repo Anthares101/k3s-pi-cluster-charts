@@ -23,11 +23,11 @@ spec:
         - containerPort: 32400
         env:
         - name: PUID
-          value: 1000
+          value: "1000"
         - name: PGID
-          value: 1000
+          value: "1000"
         - name: VERSION
-          value: docker
+          value: "docker"
         volumeMounts:
         - mountPath: /data
           name: plex-data-storage
