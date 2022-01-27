@@ -43,5 +43,4 @@ spec:
         persistentVolumeClaim:
           claimName: plex-config-storage
       - name: plex-transcode-storage
-        persistentVolumeClaim:
-          claimName: plex-transcode-storage
+        emptyDir: {}
