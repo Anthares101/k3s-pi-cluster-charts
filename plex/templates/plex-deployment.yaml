@@ -20,7 +20,7 @@ spec:
         name: plex
         resources: {{ .Values.resources | nindent 10 }}
         ports:
-        - containerPort: 32400
+        - containerPort: {{ .Values.service.port }}
         env:
         - name: PUID
           value: "1000"
