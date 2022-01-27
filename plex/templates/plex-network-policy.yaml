@@ -1,20 +1,26 @@
 {{- if .Values.networkPolicy.enabled -}}
-apiVersion: crd.projectcalico.org/v1
+apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: plex-network-policy
 spec:
-  selector: app == 'plex'
+  podSelector:
+    matchLabels:
+      app: plex
+  policyTypes:
+  - Ingress
+  - Egress
   ingress:
-  - action: Allow
-    protocol: TCP
-    destination:
-      ports:
-        - {{ .Values.service.port }}
-
-  egress:    
-  - action: Deny
-    destination:
-      nets:
-      - {{ .Values.networkPolicy.denyTrafficTo }}
+  - ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 192.168.0.1/32
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
 {{- end }}
