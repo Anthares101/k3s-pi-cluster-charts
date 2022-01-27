@@ -17,7 +17,7 @@ spec:
   egress:
   - to:
     - ipBlock:
-        cidr: 54.170.120.91/32
-    - ipBlock:
-        cidr: 46.51.207.89/32
+        cidr: 0.0.0.0/0
+        except:
+        - 192.168.0.0/24
 {{- end }}
