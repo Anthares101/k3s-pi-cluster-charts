@@ -43,4 +43,5 @@ spec:
         persistentVolumeClaim:
           claimName: plex-config-storage
       - name: plex-transcode-storage
-        emptyDir: {}
+        emptyDir:
+          sizeLimit: 20Gi
