@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  imageVersion: linuxserver/plex:1.25.3
+  imageVersion: linuxserver/plex:1.25.3.5409-f11334058-ls97
   pullPolicy: IfNotPresent
 
 service:
@@ -10,7 +10,7 @@ service:
 
 resources: |
   limits:
-    cpu: 1500m
+    cpu: 3
     memory: 1Gi
   requests:
     cpu: 500m
