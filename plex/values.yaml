@@ -25,4 +25,4 @@ autoscaling:
 
 networkPolicy:
   enabled: true
-  gateway: 192.168.0.1
+  blockEgressTrafficTo: 192.168.0.0/24
