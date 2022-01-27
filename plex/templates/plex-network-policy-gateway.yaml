@@ -2,25 +2,15 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: plex-network-policy
+  name: plex-network-policy-gateway
 spec:
   podSelector:
     matchLabels:
       app: plex
   policyTypes:
-  - Ingress
   - Egress
-  ingress:
-  - ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
   egress:
   - to:
     - ipBlock:
         cidr: {{ .Values.networkPolicy.gateway }}/32
-    ports:
-    - protocol: UDP
-      port: 53
-    - protocol: TCP
-      port: 53
 {{- end }}
