@@ -12,7 +12,9 @@ spec:
   egress:
   # Allow DNS resolution
   - to:
-    - namespaceSelector: {}
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
       podSelector:
         matchLabels:
           k8s-app: kube-dns
