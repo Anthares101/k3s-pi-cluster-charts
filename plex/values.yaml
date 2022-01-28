@@ -16,8 +16,9 @@ resources: |
     cpu: 500m
     memory: 400Mi
 
+# Plex doesn't like company and normally just crash :c
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 2
   targetCPUUtilizationPercentage: 80
