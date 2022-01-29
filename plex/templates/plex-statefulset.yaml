@@ -6,7 +6,7 @@ metadata:
   name: plex
 spec:
   serviceName: plex
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: plex
@@ -39,23 +39,23 @@ spec:
       volumes:
       - name: plex-transcode-storage
         emptyDir:
-          sizeLimit: 20Gi
+          sizeLimit: {{ .Values.storage.transcodeStorageSize }}
   volumeClaimTemplates:
   - metadata:
       name: plex-data-storage
     spec:
       accessModes:
       - ReadWriteOnce
-      storageClassName: nfs-storage
+      storageClassName: {{ .Values.storage.storageClass }}
       resources:
         requests:
-          storage: 500Gi
+          storage: {{ .Values.storage.dataStorageSize }}
   - metadata:
       name: plex-config-storage
     spec:
       accessModes:
       - ReadWriteOnce
-      storageClassName: nfs-storage
+      storageClassName: {{ .Values.storage.storageClass }}
       resources:
         requests:
-          storage: 5Gi
+          storage: {{ .Values.storage.configStorageSize }}

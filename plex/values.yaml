@@ -1,5 +1,3 @@
-replicaCount: 1
-
 image:
   imageVersion: linuxserver/plex:1.25.3
   pullPolicy: IfNotPresent
@@ -16,13 +14,11 @@ resources: |
     cpu: 500m
     memory: 400Mi
 
-# Plex doesn't like company :c
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 2
-  targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 80
+storage:
+  storageClass: nfs-storage
+  dataStorageSize: 500Gi
+  configStorageSize: 5Gi
+  transcodeStorageSize: 20Gi
 
 networkPolicy:
   enabled: true
