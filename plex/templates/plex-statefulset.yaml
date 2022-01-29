@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: plex
   name: plex
 spec:
+  serviceName: plex
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
@@ -36,12 +37,25 @@ spec:
         - mountPath: /transcode
           name: plex-transcode-storage
       volumes:
-      - name: plex-data-storage
-        persistentVolumeClaim:
-          claimName: plex-data-storage
-      - name: plex-config-storage
-        persistentVolumeClaim:
-          claimName: plex-config-storage
       - name: plex-transcode-storage
         emptyDir:
           sizeLimit: 20Gi
+      volumeClaimTemplates:
+      - metadata:
+          name: plex-data-storage
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          storageClassName: nfs-storage
+          resources:
+            requests:
+              storage: 500Gi
+      - metadata:
+          name: plex-config-storage
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          storageClassName: nfs-storage
+          resources:
+            requests:
+              storage: 5Gi

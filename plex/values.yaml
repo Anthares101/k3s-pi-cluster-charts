@@ -16,7 +16,7 @@ resources: |
     cpu: 500m
     memory: 400Mi
 
-# Plex doesn't like company and normally just crash :c
+# Plex doesn't like company :c
 autoscaling:
   enabled: false
   minReplicas: 1
