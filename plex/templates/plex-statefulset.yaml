@@ -40,22 +40,22 @@ spec:
       - name: plex-transcode-storage
         emptyDir:
           sizeLimit: 20Gi
-      volumeClaimTemplates:
-      - metadata:
-          name: plex-data-storage
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          storageClassName: nfs-storage
-          resources:
-            requests:
-              storage: 500Gi
-      - metadata:
-          name: plex-config-storage
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          storageClassName: nfs-storage
-          resources:
-            requests:
-              storage: 5Gi
+    volumeClaimTemplates:
+    - metadata:
+        name: plex-data-storage
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        storageClassName: nfs-storage
+        resources:
+          requests:
+            storage: 500Gi
+    - metadata:
+        name: plex-config-storage
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        storageClassName: nfs-storage
+        resources:
+          requests:
+            storage: 5Gi
