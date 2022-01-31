@@ -20,5 +20,13 @@ storage:
   configStorageSize: 5Gi
   transcodeStorageSize: 20Gi
 
+# Plex doesn't like company :c
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
 networkPolicy:
   enabled: true
