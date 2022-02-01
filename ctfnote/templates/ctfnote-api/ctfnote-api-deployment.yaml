@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ctfnote-api
+  name: ctfnote-api
+spec:
+  replicas: {{ .Values.ctfnoteApi.replicaCount }}
+  selector:
+    matchLabels:
+      app: ctfnote-api
+  template:
+    metadata:
+      labels:
+        app: ctfnote-api
+    spec:
+      containers:
+      - image: {{ .Values.ctfnoteApi.image.imageVersion }}
+        imagePullPolicy: {{ .Values.ctfnoteApi.image.pullPolicy }}
+        name: ctfnote-api
+        resources: {{ .Values.ctfnoteApi.resources | nindent 10 }}
+        ports:
+        - containerPort: {{ .Values.ctfnoteApi.service.port }}
+        volumeMounts:
+        - mountPath: /app/uploads
+          name: ctfnote-api-storage
+        ports:
+        - containerPort: {{ .Values.ctfnoteApi.service.port }}
+        env:
+        - name: PAD_CREATE_URL
+          value: "http://hedgedoc:{{ .Values.hedgedoc.service.port }}/new"
+        - name: PAD_SHOW_URL
+          value: "/"
+        - name: DB_DATABASE
+          value: "ctfnote"
+        - name: DB_ADMIN_LOGIN
+          value: "ctfnote"
+        - name: DB_ADMIN_PASSWORD
+          value: "ctfnote"
+        - name: DB_USER_LOGIN
+          value: "user_postgraphile"
+        - name: DB_USER_PASSWORD
+          value: "secret_password"
+        - name: DB_HOST
+          value: "db"
+        - name: DB_PORT
+          value: "{{ .Values.ctfnoteDb.service.port }}"
+        - name: WEB_PORT
+          value: "{{ .Values.ctfnoteApi.service.port }}"
+      volumes:
+      - name: ctfnote-api-storage
+        persistentVolumeClaim:
+          claimName: ctfnote-api-storage

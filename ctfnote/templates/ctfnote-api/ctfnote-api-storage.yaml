@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: plex-data-storage
+  name: ctfnote-api-storage
 spec:
   accessModes:
     - ReadWriteMany
   volumeMode: Filesystem
   resources:
     requests:
-      storage: {{ .Values.storage.dataStorageSize }}
+      storage: {{ .Values.ctfnoteApi.storage.storageSize }}
   storageClassName: nfs-storage

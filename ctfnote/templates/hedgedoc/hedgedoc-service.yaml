@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hedgedoc
+spec:
+  type: {{ .Values.hedgedoc.service.type }}
+  selector:
+    app: hedgedoc
+  ports:
+    - protocol: TCP
+      port: {{ .Values.hedgedoc.service.port }}
+      targetPort: {{ .Values.hedgedoc.service.port }}
+      nodePort: {{ .Values.hedgedoc.service.port }}

@@ -1,0 +1,26 @@
+{{- if .Values.hedgedoc.autoscaling.enabled -}}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hedgedoc-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hedgedoc
+  minReplicas: {{ .Values.hedgedoc.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.hedgedoc.autoscaling.maxReplicas }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.hedgedoc.autoscaling.targetCPUUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.hedgedoc.autoscaling.targetMemoryUtilizationPercentage }}
+{{- end }}

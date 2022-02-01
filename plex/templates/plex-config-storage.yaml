@@ -8,5 +8,5 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 5Gi
+      storage: {{ .Values.storage.configStorageSize }}
   storageClassName: nfs-storage

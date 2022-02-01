@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ctfnote-db
+  name: ctfnote-db
+spec:
+  replicas: {{ .Values.ctfnoteDb.replicaCount }}
+  selector:
+    matchLabels:
+      app: ctfnote-db
+  template:
+    metadata:
+      labels:
+        app: ctfnote-db
+    spec:
+      containers:
+      - image: {{ .Values.ctfnoteDb.image.imageVersion }}
+        imagePullPolicy: {{ .Values.ctfnoteDb.image.pullPolicy }}
+        name: ctfnote-db
+        resources: {{ .Values.ctfnoteDb.resources | nindent 10 }}
+        ports:
+        - containerPort: {{ .Values.ctfnoteDb.service.port }}
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: ctfnote-db-storage
+        ports:
+        - containerPort: {{ .Values.ctfnoteDb.service.port }}
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "ctfnote"
+        - name: POSTGRES_USER
+          value: "ctfnote"
+        - name: POSTGRES_MULTIPLE_DATABASES
+          value: "hedgedoc"
+      volumes:
+      - name: ctfnote-db-storage
+        persistentVolumeClaim:
+          claimName: ctfnote-db-storage

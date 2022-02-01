@@ -1,0 +1,26 @@
+{{- if .Values.ctfnoteApi.autoscaling.enabled -}}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ctfnote-api-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ctfnote-api
+  minReplicas: {{ .Values.ctfnoteApi.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.ctfnoteApi.autoscaling.maxReplicas }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.ctfnoteApi.autoscaling.targetCPUUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.ctfnoteApi.autoscaling.targetMemoryUtilizationPercentage }}
+{{- end }}
