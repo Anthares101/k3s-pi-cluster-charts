@@ -10,4 +10,3 @@ spec:
     requests:
       storage: 5Gi
   storageClassName: nfs-storage
-  volumeName: plex-config-storage
