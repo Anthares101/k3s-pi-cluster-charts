@@ -100,7 +100,7 @@ hedgedoc:
     storageSize: 10Gi
   
   env:
-    CMD_URL_ADDPORT: 'false'
+    CMD_URL_ADDPORT: "false"
 
   resources: |
     limits:
