@@ -2,7 +2,7 @@ ctfnote:
   replicaCount: 1
 
   image:
-    imageVersion: ctfnote:6802006
+    imageVersion: ctfnote
     pullPolicy: IfNotPresent
 
   service:
@@ -28,7 +28,7 @@ ctfnoteApi:
   replicaCount: 1
 
   image:
-    imageVersion: ctfnote-api:6802006
+    imageVersion: ctfnote-api
     pullPolicy: IfNotPresent
 
   service:
@@ -58,7 +58,7 @@ ctfnoteDb:
   replicaCount: 1
 
   image:
-    imageVersion: ctfnote-db:6802006
+    imageVersion: ctfnote-db
     pullPolicy: IfNotPresent
 
   service:
