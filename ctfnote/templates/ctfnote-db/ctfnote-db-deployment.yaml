@@ -14,6 +14,9 @@ spec:
       labels:
         app: ctfnote-db
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
       containers:
       - image: {{ .Values.ctfnoteDb.image.imageVersion }}
         imagePullPolicy: {{ .Values.ctfnoteDb.image.pullPolicy }}
@@ -23,6 +26,7 @@ spec:
         - containerPort: {{ .Values.ctfnoteDb.service.port }}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
+          subPath: pgdata
           name: ctfnote-db-storage
         ports:
         - containerPort: {{ .Values.ctfnoteDb.service.port }}
@@ -33,6 +37,8 @@ spec:
           value: "ctfnote"
         - name: POSTGRES_MULTIPLE_DATABASES
           value: "hedgedoc"
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
       volumes:
       - name: ctfnote-db-storage
         persistentVolumeClaim:
