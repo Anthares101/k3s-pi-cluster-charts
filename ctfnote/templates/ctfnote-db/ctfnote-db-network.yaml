@@ -1,0 +1,32 @@
+{{- if .Values.networkPolicy.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ctfnote-db
+spec:
+  podSelector:
+    matchLabels:
+      app: ctfnote-db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: {{ Release.Namespace }}
+      podSelector:
+        matchLabels:
+          app: hedgedoc
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: {{ Release.Namespace }}
+      podSelector:
+        matchLabels:
+          app: ctfnote-api
+  - to:
+    ports:
+    - port: {{ .Values.ctfnoteDb.service.port }}
+      protocol: UDP
+    - port: {{ .Values.ctfnoteDb.service.port }}
+      protocol: TCP
+{{- end }}
