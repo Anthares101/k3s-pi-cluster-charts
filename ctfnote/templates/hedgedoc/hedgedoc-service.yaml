@@ -10,4 +10,3 @@ spec:
     - protocol: TCP
       port: {{ .Values.hedgedoc.service.port }}
       targetPort: {{ .Values.hedgedoc.service.port }}
-      nodePort: {{ .Values.hedgedoc.service.port }}

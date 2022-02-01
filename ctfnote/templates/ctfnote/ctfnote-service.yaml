@@ -10,4 +10,3 @@ spec:
     - protocol: TCP
       port: {{ .Values.ctfnote.service.port }}
       targetPort: {{ .Values.ctfnote.service.port }}
-      nodePort: {{ .Values.ctfnote.service.port }}
