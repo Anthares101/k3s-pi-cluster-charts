@@ -42,10 +42,10 @@ ctfnoteApi:
   resources: |
     limits:
       cpu: 100m
-      memory: 200Mi
+      memory: 300Mi
     requests:
       cpu: 50m
-      memory: 100Mi
+      memory: 200Mi
 
   autoscaling:
     enabled: true
@@ -72,10 +72,10 @@ ctfnoteDb:
   resources: |
     limits:
       cpu: 100m
-      memory: 200Mi
+      memory: 300Mi
     requests:
       cpu: 50m
-      memory: 100Mi
+      memory: 200Mi
 
   autoscaling:
     enabled: true
@@ -105,10 +105,10 @@ hedgedoc:
   resources: |
     limits:
       cpu: 100m
-      memory: 200Mi
+      memory: 350Mi
     requests:
       cpu: 50m
-      memory: 100Mi
+      memory: 250Mi
 
   autoscaling:
     enabled: true
@@ -120,4 +120,4 @@ hedgedoc:
 networkPolicy:
   enabled: true
 
-domain: mydomain.my
+domain: ctfnote.magi.lan

@@ -9,11 +9,12 @@ spec:
       app: ctfnote
   policyTypes:
   - Egress
+  - Ingress
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: {{ Release.Namespace }}
+          kubernetes.io/metadata.name: {{ .Release.Namespace }}
       podSelector:
         matchLabels:
           app: ctfnote-api
@@ -25,7 +26,7 @@ spec:
   - to:
     - namespaceSelector:
         matchLabels:
-          kubernetes.io/metadata.name: {{ Release.Namespace }}
+          kubernetes.io/metadata.name: {{ .Release.Namespace }}
       podSelector:
         matchLabels:
           app: hedgedoc
@@ -34,4 +35,11 @@ spec:
       protocol: UDP
     - port: {{ .Values.hedgedoc.service.port }}
       protocol: TCP
+  ingress:
+    - to:
+      ports:
+      - port: {{ .Values.ctfnote.service.port }}
+        protocol: UDP
+      - port: {{ .Values.ctfnote.service.port }}
+        protocol: TCP
 {{- end }}
