@@ -88,8 +88,8 @@ hedgedoc:
   replicaCount: 1
 
   image:
-    imageVersion: quay.io/hedgedoc/hedgedoc:1.9.2-alpine
-    pullPolicy: IfNotPresent
+    imageVersion: quay.io/hedgedoc/hedgedoc
+    pullPolicy: Never
 
   service:
     type: ClusterIP
