@@ -2,10 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ctfnote
-{{- if .Values.certmanager.enabled -}}
+{{ if .Values.certmanager.enabled }}
   annotations:
     cert-manager.io/cluster-issuer: {{ .Values.certmanager.issuer }}
-{{- end }}
+{{ end }}
 spec:
   rules:
   - host: {{ .Values.domain }}
@@ -21,6 +21,6 @@ spec:
   tls:
   - hosts:
     - {{ .Values.domain }}
-{{- if .Values.certmanager.enabled -}}
+  {{ if .Values.certmanager.enabled }}
     secretName: ctfnote-ingress-cert
-{{- end }}
+  {{ end }}
