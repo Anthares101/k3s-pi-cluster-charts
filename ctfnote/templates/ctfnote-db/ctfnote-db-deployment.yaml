@@ -26,7 +26,6 @@ spec:
         - containerPort: {{ .Values.ctfnoteDb.service.port }}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
-          subPath: pgdata
           name: ctfnote-db-storage
         ports:
         - containerPort: {{ .Values.ctfnoteDb.service.port }}
@@ -38,7 +37,7 @@ spec:
         - name: POSTGRES_MULTIPLE_DATABASES
           value: "hedgedoc"
         - name: PGDATA
-          value: "/var/lib/postgresql/data/pgdata"
+          value: "/var/lib/postgresql/data"
       volumes:
       - name: ctfnote-db-storage
         persistentVolumeClaim:
