@@ -100,8 +100,8 @@ hedgedoc:
     storageSize: 10Gi
   
   env:
-    CMD_URL_ADDPORT: "false"
-    TZ: "Europe/Madrid"
+    CMD_URL_ADDPORT: false
+    TZ: Europe/Madrid
 
   resources: |
     limits:
