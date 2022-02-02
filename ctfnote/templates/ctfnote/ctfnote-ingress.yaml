@@ -1,9 +1,11 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ctfnote
-{{ if .Values.certmanager.enabled }}
   annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-redirect@kubernetescrd
+{{ if .Values.certmanager.enabled }}
     cert-manager.io/cluster-issuer: {{ .Values.certmanager.issuer }}
 {{ end }}
 spec:
@@ -24,3 +26,16 @@ spec:
   {{ if .Values.certmanager.enabled }}
     secretName: ctfnote-ingress-cert
   {{ end }}
+
+---
+# Ingresses
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect
+
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+    port: "8443"
