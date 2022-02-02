@@ -101,6 +101,7 @@ hedgedoc:
   
   env:
     CMD_URL_ADDPORT: "false"
+    TZ: "Europe/Madrid"
 
   resources: |
     limits:
@@ -119,5 +120,9 @@ hedgedoc:
 
 networkPolicy:
   enabled: true
+
+certmanager:
+  enabled: false
+  issuer: letsencrypt
 
 domain: ctfnote.magi.lan

@@ -43,6 +43,8 @@ spec:
           value: "{{ .Values.hedgedoc.env.CMD_URL_ADDPORT }}"
         - name: CMD_PORT
           value: "{{ .Values.hedgedoc.service.port }}"
+        - name: TZ
+          value: "{{ .Values.hedgedoc.env.TZ }}"
       volumes:
       - name: hedgedoc-storage
         persistentVolumeClaim:
