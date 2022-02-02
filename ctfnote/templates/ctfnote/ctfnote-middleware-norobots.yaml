@@ -5,5 +5,5 @@ metadata:
 
 spec:
   headers:
-    customRequestHeaders:
+    customResponseHeaders:
       X-Robots-Tag: noindex
