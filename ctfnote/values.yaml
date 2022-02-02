@@ -125,4 +125,8 @@ certmanager:
   enabled: false
   issuer: letsencrypt
 
+tlsPortRedirect:
+  enabled: false
+  port: 8443
+
 domain: ctfnote.magi.lan
