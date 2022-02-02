@@ -1,0 +1,12 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect
+
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+  {{ if .Values.tlsPortRedirect.enabled }}
+    port: "{{ .Values.tlsPortRedirect.port }}"
+  {{ end }}
