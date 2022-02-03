@@ -4,6 +4,7 @@ metadata:
   name: plex
 spec:
   type: {{ .Values.service.type }}
+  externalTrafficPolicy: Local
   selector:
     app: plex
   ports:
