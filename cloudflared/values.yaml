@@ -23,7 +23,6 @@ networkPolicy:
   enabled: true
 
 cloudflared:
-  tunnelCredentials: /home/pi/.cloudflared/TUNNEL-UUID.json
   tunnelName: example-tunnel
   ingress:
   - hostname: mydomain.com
