@@ -20,7 +20,7 @@ spec:
         name: cloudflared
         resources: {{ .Values.resources | nindent 10 }}
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: 2000
         args:
         - tunnel
         - --config
