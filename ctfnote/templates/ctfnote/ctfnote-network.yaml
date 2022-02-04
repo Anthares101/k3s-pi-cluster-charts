@@ -36,8 +36,7 @@ spec:
     - port: {{ .Values.hedgedoc.service.port }}
       protocol: TCP
   ingress:
-  - to:
-    ports:
+  - ports:
     - port: {{ .Values.ctfnote.service.port }}
       protocol: UDP
     - port: {{ .Values.ctfnote.service.port }}
