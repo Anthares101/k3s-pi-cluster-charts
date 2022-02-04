@@ -33,7 +33,8 @@ spec:
     - port: 53
       protocol: TCP
   ingress:
-  - ports:
+  - to:
+    ports:
     - port: 2000
       protocol: TCP
 
