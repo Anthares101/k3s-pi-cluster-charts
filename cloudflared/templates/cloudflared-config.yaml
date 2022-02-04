@@ -6,7 +6,7 @@ data:
   config.yaml: |
     # Name of the tunnel you want to run
     tunnel: {{ .Values.cloudflared.tunnelName }}
-    credentials-file: /etc/cloudflared/creds/credentials.json
+    credentials-file: /etc/cloudflared/creds/creds.json
     # Serves the metrics server under /metrics and the readiness server under /ready
     metrics: 127.0.0.1:2000
     no-autoupdate: true
