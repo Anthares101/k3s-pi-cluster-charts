@@ -8,7 +8,7 @@ data:
     tunnel: {{ .Values.cloudflared.tunnelName }}
     credentials-file: /etc/cloudflared/creds/creds.json
     # Serves the metrics server under /metrics and the readiness server under /ready
-    metrics: 127.0.0.1:2000
+    metrics: 0.0.0.0:2000
     no-autoupdate: true
     # The `ingress` block tells cloudflared which local service to route incoming
     # requests to. For more about ingress rules, see
