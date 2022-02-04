@@ -7,6 +7,3 @@ spec:
   redirectScheme:
     scheme: https
     permanent: true
-  {{ if .Values.tlsPortRedirect.enabled }}
-    port: "{{ .Values.tlsPortRedirect.port }}"
-  {{ end }}

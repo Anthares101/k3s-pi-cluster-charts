@@ -93,7 +93,7 @@ hedgedoc:
 
   service:
     type: ClusterIP
-    port: 8443
+    port: 3000
   
   storage:
     storageClass: nfs-storage
@@ -124,9 +124,5 @@ networkPolicy:
 certmanager:
   enabled: false
   issuer: letsencrypt
-
-tlsPortRedirect:
-  enabled: false
-  port: 8443
 
 domain: ctfnote.magi.lan
