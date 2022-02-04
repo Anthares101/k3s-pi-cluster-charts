@@ -13,7 +13,7 @@ spec:
   egress:
   - to:
     - ipBlock:
-        cidr: {{ .Values.clusterServiceCidr }}
+        cidr: {{ .Values.clusterPodsCidr }}
   - to:
     - ipBlock:
         cidr: 0.0.0.0/0

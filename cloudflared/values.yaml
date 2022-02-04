@@ -30,4 +30,4 @@ cloudflared:
   - hostname: www.mydomain.com
     service: http://serviceName.serviceNamespace.svc
 
-clusterServiceCidr: 10.43.0.0/16
+clusterPodsCidr: 10.42.0.0/16
