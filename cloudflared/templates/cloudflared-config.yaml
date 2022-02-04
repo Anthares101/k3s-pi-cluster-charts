@@ -16,10 +16,10 @@ data:
     #
     # Remember, these rules route traffic from cloudflared to a local service
     ingress: |
-      {{- range $ingress := .Values.cloudflared.ingress }}
-        {{- range $key, $ingress := .Values.cloudflared.ingress }}
+    {{- range $ingress := .Values.cloudflared.ingress }}
+      - {{- range $key, $val := $ingress }}
           {{ $key }}: {{ $val }}
         {{- end }}
-      {{- end }}
+    {{- end }}
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
