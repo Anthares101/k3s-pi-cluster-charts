@@ -15,6 +15,9 @@ data:
     # https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress
     #
     # Remember, these rules route traffic from cloudflared to a local service
-    ingress: {{ .Values.cloudflared.ingress | nindent 4 }}
+    ingress: |
+      {{- range $key, $val := .Values.cloudflared.ingress }}
+        {{ $key }}: {{ $val }}
+      {{- end }}
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
     - service: http_status:404
