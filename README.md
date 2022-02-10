@@ -5,7 +5,7 @@ Since I just finished the build of my personal [cluster](https://github.com/anth
 # How to use them?
 **CAUTION: Avoid modifying the service port of an app in the `values.yaml` file since it is used for container port specification and not all containers allow changing the port they listen to** 
 
-Just tweak the `values.yaml` to your liking and launch a new release with Helm. I really like doing it this way:
+Just tweak the `values.yaml` to your liking, check if any secret file is required and launch a new release with Helm. I really like doing it this way:
 ```
 helm upgrade --install --create-namespace --atomic <RELEASE-NAME> <CHART-PATH> --namespace <NAMESPACE-NAME>
 ```
