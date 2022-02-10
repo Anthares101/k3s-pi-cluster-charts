@@ -6,7 +6,7 @@ bin/*
 /.bin
 /_test/secrets/*.json
 cloudflared/secrets/creds.json
-aws-proxy/secrets/creds.pem
+autossh-proxy/secrets/creds.pem
 
 # OSX leaves these everywhere on SMB shares
 ._*

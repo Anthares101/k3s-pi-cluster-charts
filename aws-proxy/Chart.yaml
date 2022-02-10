@@ -1,6 +1,6 @@
 apiVersion: v2
-name: aws-proxy
-description: A Helm chart that deploy autossh utility to open a tunnel with a aws instance
+name: autossh-proxy
+description: A Helm chart that deploy autossh utility to open a tunnel to an external instance
 
 # A chart can be either an 'application' or a 'library' chart.
 #

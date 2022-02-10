@@ -2,43 +2,43 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: aws-proxy
-  name: aws-proxy
+    app: autossh-proxy
+  name: autossh-proxy
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: aws-proxy
+      app: autossh-proxy
   template:
     metadata:
       labels:
-        app: aws-proxy
+        app: autossh-proxy
     spec:
       containers:
       - image: {{ .Values.image.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        name: aws-proxy
+        name: autossh-proxy
         resources: {{ .Values.resources | nindent 10 }}
         env:
         - name: SSH_REMOTE_USER
-          value: "{{ .Values.awsProxy.sshUser }}"
+          value: "{{ .Values.autosshProxy.sshUser }}"
         - name: SSH_REMOTE_HOST
-          value: "{{ .Values.awsProxy.sshHost }}"
+          value: "{{ .Values.autosshProxy.sshHost }}"
         - name: SSH_REMOTE_PORT
-          value: "{{ .Values.awsProxy.sshPort }}"
+          value: "{{ .Values.autosshProxy.sshPort }}"
         - name: SSH_TUNNEL_PORT
-          value: "{{ .Values.awsProxy.tunnelEntryPort }}"
+          value: "{{ .Values.autosshProxy.tunnelEntryPort }}"
         - name: SSH_TARGET_HOST
-          value: "{{ .Values.awsProxy.targetService }}"
+          value: "{{ .Values.autosshProxy.targetService }}"
         - name: SSH_TARGET_PORT
-          value: "{{ .Values.awsProxy.targetServicePort }}"
+          value: "{{ .Values.autosshProxy.targetServicePort }}"
         - name: SSH_KEY_FILE
-          value: "/etc/aws/creds.pem"
+          value: "/etc/autossh/creds.pem"
         - name: SSH_BIND_IP
           value: "0.0.0.0"
         volumeMounts:
         - name: creds
-          mountPath: /etc/aws/
+          mountPath: /etc/autossh/
           readOnly: true
       volumes:
       - name: creds

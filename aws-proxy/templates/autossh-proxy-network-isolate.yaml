@@ -2,11 +2,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: aws-proxy-network-isolate
+  name: autossh-proxy-network-isolate
 spec:
   podSelector:
     matchLabels:
-      app: aws-proxy
+      app: autossh-proxy
   policyTypes:
   - Ingress
   - Egress
