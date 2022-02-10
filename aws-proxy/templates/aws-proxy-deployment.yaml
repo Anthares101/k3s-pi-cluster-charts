@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: aws-proxy
+  name: aws-proxy
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: aws-proxy
+  template:
+    metadata:
+      labels:
+        app: aws-proxy
+    spec:
+      containers:
+      - image: {{ .Values.image.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: aws-proxy
+        resources: {{ .Values.resources | nindent 10 }}
+        env:
+        - name: SSH_REMOTE_USER
+          value: "{{ .Values.awsProxy.sshUser }}"
+        - name: SSH_REMOTE_HOST
+          value: "{{ .Values.awsProxy.sshHost }}"
+        - name: SSH_REMOTE_PORT
+          value: "{{ .Values.awsProxy.sshPort }}"
+        - name: SSH_TUNNEL_PORT
+          value: "{{ .Values.awsProxy.tunnelEntryPort }}"
+        - name: SSH_TARGET_HOST
+          value: "{{ .Values.awsProxy.targetService }}"
+        - name: SSH_TARGET_PORT
+          value: "{{ .Values.awsProxy.targetServicePort }}"
+        - name: SSH_KEY_FILE
+          value: "/etc/aws/creds.perm"
+        - name: SSH_BIND_IP
+          value: "0.0.0.0"
+        volumeMounts:
+        - name: creds
+          mountPath: /etc/aws/
+          readOnly: true
+      volumes:
+      - name: creds
+        secret:
+          secretName: tunnel-credentials

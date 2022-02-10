@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  imageVersion: jnovack/autossh:2.0.1
+  pullPolicy: IfNotPresent
+
+resources: |
+  limits:
+    cpu: 200m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+networkPolicy:
+  enabled: true
+
+awsProxy:
+  sshUser: ec2-user
+  sshPort: 22
+  sshHost: ec2-11-11-111-111.eu-west-0.compute.amazonaws.com
+  tunnelEntryPort: 8000
+  targetService: serviceName.serviceNamespace.svc
+  targetServicePort: 8000
+
+clusterPodsCidr: 10.42.0.0/16
