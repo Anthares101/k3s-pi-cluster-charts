@@ -9,3 +9,5 @@
 The idea of this chart is the same as the Cloudflared one but with non-http applications. 
 
 This chart will generate a tunnel to an instance in AWS, Azure or whatever provider you use to allow you to host different services without openning ports in your router or firewall. Also is great to avoid pointing DNS record to your public IP address.
+
+It is necessary to set the `GatewayPorts clientspecified` option in the remote host `/etc/ssh/sshd_config` in order get this working.
