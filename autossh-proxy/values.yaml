@@ -25,7 +25,7 @@ networkPolicy:
 autosshProxy:
   sshUser: ec2-user
   sshPort: 22
-  sshHost: ec2-11-11-111-111.eu-west-0.compute.amazonautossh.com
+  sshHost: 11.11.11.11
   tunnelEntryPort: 8000
   targetService: serviceName.serviceNamespace.svc
   targetServicePort: 8000
