@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  imageVersion: linuxserver/plex:1.25.3
+  imageVersion: linuxserver/plex:1.25.5
   pullPolicy: IfNotPresent
 
 service:
