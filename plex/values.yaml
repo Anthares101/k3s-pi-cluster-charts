@@ -32,3 +32,11 @@ autoscaling:
 
 networkPolicy:
   enabled: true
+
+ingressEnabled: false
+
+certmanager:
+  enabled: false
+  issuer: letsencrypt
+
+domain: plex.magi.lan

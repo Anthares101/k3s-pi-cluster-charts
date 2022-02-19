@@ -1,0 +1,11 @@
+{{- if .Values.ingressEnabled -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: plex
+spec:
+  chain:
+    middlewares:
+    - name: norobots
+    - name: redirect
+{{- end }}

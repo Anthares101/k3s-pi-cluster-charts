@@ -19,6 +19,7 @@ autosshProxy:
   sshUser: ec2-user
   sshPort: 22
   sshHost: 11.11.11.11
+  sshListenInterface: 127.0.0.1
   tunnelEntryPort: 8000
   targetService: serviceName.serviceNamespace.svc
   targetServicePort: 8000

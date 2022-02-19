@@ -1,0 +1,11 @@
+{{- if .Values.ingressEnabled -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: norobots
+
+spec:
+  headers:
+    customResponseHeaders:
+      X-Robots-Tag: noindex
+{{- end }}

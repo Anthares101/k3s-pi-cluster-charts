@@ -1,0 +1,29 @@
+{{- if .Values.ingressEnabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-plex@kubernetescrd
+{{ if .Values.certmanager.enabled }}
+    cert-manager.io/cluster-issuer: {{ .Values.certmanager.issuer }}
+{{ end }}
+spec:
+  rules:
+  - host: {{ .Values.domain }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: plex
+            port:
+              number: {{ .Values.service.port }}
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - {{ .Values.domain }}
+  {{ if .Values.certmanager.enabled }}
+    secretName: plex-ingress-cert
+  {{ end }}
+{{- end }}
