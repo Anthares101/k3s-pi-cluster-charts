@@ -88,7 +88,7 @@ hedgedoc:
   replicaCount: 1
 
   image:
-    imageVersion: linuxserver/hedgedoc:1.9.2
+    imageVersion: linuxserver/hedgedoc:1.9.3
     pullPolicy: IfNotPresent
 
   service:
