@@ -20,7 +20,7 @@ spec:
         name: wireguard
         resources: {{ .Values.resources | nindent 10 }}
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: 51820
         securityContext:
           capabilities:
             add: ["NET_ADMIN", "SYS_MODULE"]

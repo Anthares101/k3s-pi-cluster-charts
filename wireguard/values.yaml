@@ -6,7 +6,7 @@ image:
 
 service:
   type: NodePort
-  port: 31820 # Kubernetes need another port
+  port: 31820 # This only apply to service, the pod is using the default port
 
 env:
   PUID: 1000

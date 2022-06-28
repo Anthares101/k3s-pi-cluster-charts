@@ -13,7 +13,7 @@ spec:
   ingress:
   - ports:
     - protocol: UDP
-      port: {{ .Values.service.port }}
+      port: 51820
   egress:
   - to:
     - ipBlock:
