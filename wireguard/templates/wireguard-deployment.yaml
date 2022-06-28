@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wireguard
+  name: wireguard
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: wireguard
+  template:
+    metadata:
+      labels:
+        app: wireguard
+    spec:
+      containers:
+      - image: {{ .Values.image.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: wireguard
+        resources: {{ .Values.resources | nindent 10 }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        env:
+        - name: PUID
+          value: {{ .Values.env.PUID }}
+        - name: PGID
+          value: {{ .Values.env.PGID }}
+        - name: PEERS
+          value: {{ .Values.env.PEERS }}
+        - name: TZ
+          value: {{ .Values.env.TZ }}
+        volumeMounts:
+        - mountPath: /config
+          name: wireguard-storage
+        - mountPath: /lib/modules
+          name: kernel-modules
+      volumes:
+      - name: wireguard-storage
+        persistentVolumeClaim:
+          claimName: wireguard-storage
+      - name: kernel-modules
+        hostPath:
+          path: /lib/modules
+          type: Directory

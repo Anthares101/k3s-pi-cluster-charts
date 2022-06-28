@@ -1,0 +1,38 @@
+replicaCount: 1
+
+image:
+  imageVersion: linuxserver/wireguard:1.0.20210914
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 51820
+
+env:
+  PUID: "1000"
+  PGID: "1000"
+  PEERS: "1"
+  TZ: "Europe/Madrid"
+
+resources: |
+  limits:
+    cpu: 600m
+    memory: 400Mi
+  requests:
+    cpu: 300m
+    memory: 200Mi
+
+storage:
+  storageClass: nfs-storage
+  size: 5Gi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+networkPolicy:
+  privateCIDR: 192.168.0.0/24
+  enabled: true
