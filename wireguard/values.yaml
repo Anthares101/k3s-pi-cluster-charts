@@ -6,7 +6,7 @@ image:
 
 service:
   type: NodePort
-  port: 51820
+  port: 31820 # Kubernetes need another port
 
 env:
   PUID: "1000"

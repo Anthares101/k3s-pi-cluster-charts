@@ -30,6 +30,8 @@ spec:
           value: {{ .Values.env.PEERS }}
         - name: TZ
           value: {{ .Values.env.TZ }}
+        - name: SERVERPORT
+          value: {{ .Values.service.port }}
         volumeMounts:
         - mountPath: /config
           name: wireguard-storage
