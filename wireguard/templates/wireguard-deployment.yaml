@@ -21,6 +21,9 @@ spec:
         resources: {{ .Values.resources | nindent 10 }}
         ports:
         - containerPort: {{ .Values.service.port }}
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_MODULE"]
         env:
         - name: PUID
           value: "{{ .Values.env.PUID }}"
