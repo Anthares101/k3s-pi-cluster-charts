@@ -17,11 +17,11 @@ env:
 
 resources: |
   limits:
-    cpu: 600m
-    memory: 400Mi
-  requests:
-    cpu: 300m
+    cpu: 200m
     memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
 
 storage:
   storageClass: nfs-storage
