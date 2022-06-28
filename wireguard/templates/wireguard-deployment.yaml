@@ -33,6 +33,8 @@ spec:
           value: "{{ .Values.env.PEERS }}"
         - name: TZ
           value: "{{ .Values.env.TZ }}"
+        - name: SERVERURL
+          value: "{{ .Values.env.SERVERURL }}"
         - name: SERVERPORT
           value: "{{ .Values.service.port }}"
         volumeMounts:
