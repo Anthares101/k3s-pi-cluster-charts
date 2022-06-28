@@ -13,7 +13,7 @@ env:
   PGID: 1000
   PEERS: 1
   TZ: Europe/Madrid
-  SERVERURL: vpn.domain.com
+  SERVERURL: vpn.domain.com # Use an empty string to use your public IP
 
 resources: |
   limits:
