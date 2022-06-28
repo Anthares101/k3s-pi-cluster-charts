@@ -9,10 +9,10 @@ service:
   port: 31820 # Kubernetes need another port
 
 env:
-  PUID: "1000"
-  PGID: "1000"
-  PEERS: "1"
-  TZ: "Europe/Madrid"
+  PUID: 1000
+  PGID: 1000
+  PEERS: 1
+  TZ: Europe/Madrid
 
 resources: |
   limits:

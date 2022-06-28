@@ -23,15 +23,15 @@ spec:
         - containerPort: {{ .Values.service.port }}
         env:
         - name: PUID
-          value: {{ .Values.env.PUID }}
+          value: "{{ .Values.env.PUID }}"
         - name: PGID
-          value: {{ .Values.env.PGID }}
+          value: "{{ .Values.env.PGID }}"
         - name: PEERS
-          value: {{ .Values.env.PEERS }}
+          value: "{{ .Values.env.PEERS }}"
         - name: TZ
-          value: {{ .Values.env.TZ }}
+          value: "{{ .Values.env.TZ }}"
         - name: SERVERPORT
-          value: {{ .Values.service.port }}
+          value: "{{ .Values.service.port }}"
         volumeMounts:
         - mountPath: /config
           name: wireguard-storage
