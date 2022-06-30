@@ -14,6 +14,7 @@ env:
   PEERS: 1
   TZ: Europe/Madrid
   SERVERURL: vpn.domain.com # Use an empty string to use your public IP
+  ALLOWEDIPS: 10.13.13.1/32, 192.168.0.0/24
 
 resources: |
   limits:
@@ -33,7 +34,3 @@ autoscaling:
   maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
-
-networkPolicy:
-  privateCIDR: 192.168.0.0/24
-  enabled: true

@@ -37,6 +37,8 @@ spec:
           value: "{{ .Values.env.SERVERURL }}"
         - name: SERVERPORT
           value: "{{ .Values.service.port }}"
+        - name: ALLOWEDIPS
+          value: "{{ .Values.env.ALLOWEDIPS }}"
         volumeMounts:
         - mountPath: /config
           name: wireguard-storage
