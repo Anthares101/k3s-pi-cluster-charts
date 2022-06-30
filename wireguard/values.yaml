@@ -14,7 +14,7 @@ env:
   PEERS: 1
   TZ: Europe/Madrid
   SERVERURL: vpn.domain.com # Use an empty string to use your public IP
-  ALLOWEDIPS: 10.13.13.1/32, 192.168.0.0/24
+  ALLOWEDIPS: 0.0.0.0/0, ::0/0
 
 resources: |
   limits:
