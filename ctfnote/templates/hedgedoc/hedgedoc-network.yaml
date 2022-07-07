@@ -18,6 +18,13 @@ spec:
       podSelector:
         matchLabels:
           app: ctfnote
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: {{ .Release.Namespace }}
+      podSelector:
+        matchLabels:
+          app: ctfnote-api
   - to:
     ports:
     - port: {{ .Values.hedgedoc.service.port }}
