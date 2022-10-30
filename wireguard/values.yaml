@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   imageVersion: linuxserver/wireguard:1.0.20210914
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: NodePort
