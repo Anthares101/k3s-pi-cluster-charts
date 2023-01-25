@@ -5,7 +5,7 @@ image:
   pullPolicy: Always
 
 config:
-  CHAT_ID: 123
+  CHAT_ID: '123'
   TOKEN: 'TOKEN'
   HOSTNAME: 'HOST'
 
