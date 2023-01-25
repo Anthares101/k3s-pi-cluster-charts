@@ -20,7 +20,8 @@ spec:
         name: get-ip-bot
         resources: {{ .Values.resources | nindent 10 }}
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /app/config.py
+          subPath: config.py
           name: get-ip-bot-config
           readOnly: true
       volumes:
