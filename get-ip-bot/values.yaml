@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  imageVersion: anthares101/get-ip-bot:latest
+  pullPolicy: Always
+
+config:
+  CHAT_ID: 123
+  TOKEN: 'TOKEN'
+  HOSTNAME: 'HOST'
+
+resources: |
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi

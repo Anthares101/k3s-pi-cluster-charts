@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: get-ip-bot
+  name: get-ip-bot
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: get-ip-bot
+  template:
+    metadata:
+      labels:
+        app: get-ip-bot
+    spec:
+      containers:
+      - image: {{ .Values.image.imageVersion }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: get-ip-bot
+        resources: {{ .Values.resources | nindent 10 }}
+        volumeMounts:
+        - mountPath: /app
+          name: get-ip-bot-config
+      volumes:
+      - name: get-ip-bot-config
+        secret:
+          secretName: get-ip-bot-config
+          optional: false
