@@ -2,7 +2,7 @@ ctfnote:
   replicaCount: 1
 
   image:
-    imageVersion: ghcr.io/tfns/ctfnote/front:latest
+    imageVersion: anthares101/ctfnote:frontend-latest
     pullPolicy: Always
 
   service:
@@ -28,7 +28,7 @@ ctfnoteApi:
   replicaCount: 1
 
   image:
-    imageVersion: ghcr.io/tfns/ctfnote/api:latest
+    imageVersion: anthares101/ctfnote:api-latest
     pullPolicy: Always
 
   service:
@@ -58,7 +58,7 @@ ctfnoteDb:
   replicaCount: 1
 
   image:
-    imageVersion: ghcr.io/tfns/ctfnote/db:latest
+    imageVersion: anthares101/ctfnote:db-latest
     pullPolicy: Always
 
   service:
