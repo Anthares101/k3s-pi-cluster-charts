@@ -47,6 +47,14 @@ spec:
           value: "{{ .Values.ctfnoteDb.service.port }}"
         - name: WEB_PORT
           value: "{{ .Values.ctfnoteApi.service.port }}"
+        - name: USE_DISCORD
+          value: "false"
+        - name: DISCORD_BOT_TOKEN
+          value: "bot_token"
+        - name: DISCORD_SERVER_ID
+          value: "server_id"
+        - name: DISCORD_VOICE_CHANNELS
+          value: "3"
       volumes:
       - name: ctfnote-api-storage
         persistentVolumeClaim:
