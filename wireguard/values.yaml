@@ -34,3 +34,8 @@ autoscaling:
   maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
+
+networkPolicy:
+  enabled: true
+  clusterPodsCidr: 10.42.0.0/16
+  clusterSvcCidr: 10.43.0.0/16
