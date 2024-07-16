@@ -4,9 +4,9 @@ metadata:
   name: plex-config-storage
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
       storage: {{ .Values.storage.configStorageSize }}
-  storageClassName: nfs-storage
+  storageClassName: local-path
