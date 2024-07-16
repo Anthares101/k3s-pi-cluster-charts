@@ -21,6 +21,8 @@ resources: |
 
 storage:
   storageClass: nfs-storage
+  # This storage class is installed by default in K3S https://docs.k3s.io/storage
+  localStorageClass: local-path
   dataStorageSize: 500Gi
   configStorageSize: 5Gi
   transcodeStorageSize: 20Gi
