@@ -1,5 +1,8 @@
 replicaCount: 1
 
+# All pods will be scheduled to this node name, this is needed since Plex DB has to be locally available so a hostPath volume is used :/
+nodeName: node
+
 image:
   imageVersion: linuxserver/plex:1.25.5
   pullPolicy: IfNotPresent
@@ -22,7 +25,6 @@ storage:
   configStorageSize: 5Gi
   transcodeStorageSize: 20Gi
 
-# Plex doesn't like company :c
 autoscaling:
   enabled: false
   minReplicas: 1
