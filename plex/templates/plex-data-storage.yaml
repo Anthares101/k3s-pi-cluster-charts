@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.dataStorageSize }}
-  storageClassName: nfs-storage
+  storageClassName: {{ .Values.storage.storageClass }}
