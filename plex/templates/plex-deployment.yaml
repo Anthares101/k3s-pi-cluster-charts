@@ -9,13 +9,13 @@ spec:
   selector:
     matchLabels:
       app: plex
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: plex
     spec:
+      nodeSelector:
+        k3s.io/hostname: {{ .Values.nodeName }}
       containers:
       - image: {{ .Values.image.imageVersion }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
