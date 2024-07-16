@@ -9,4 +9,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.configStorageSize }}
-  storageClassName: local-path
+  storageClassName: {{ .Values.storage.localStorageClass }}
